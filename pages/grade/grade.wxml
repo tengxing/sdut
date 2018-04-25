@@ -1,0 +1,29 @@
+<!--grade.wxml-->
+<view wx:if="{{grades.length>0}}">
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">序号</view>
+      <view class="th">学年</view>
+      <view class="th ">学科名称</view>
+      <view class="th">类型</view>
+      <view class="th">原成绩</view>
+    </view>
+    <block wx:for="{{grades}}" wx:for-item="grade">
+      <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+        <view class="td">{{index+1}}</view>
+        <view class="td">{{grade.schoolYear}}</view>
+        <view class="td">{{grade.courseName}}</view>
+        <view class="td">{{grade.courseType}}</view>
+        <view class="td">{{grade.testScore}}</view>
+      </view>
+      <view class="tr" wx:else>
+        <view class="td">{{index+1}}</view>
+        <view class="td">{{grade.schoolYear}}</view>
+        <view class="td">{{grade.courseName}}</view>
+        <view class="td">{{grade.courseType}}</view>
+        <view class="td">{{grade.testScore}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+<view wx:else> <text class='tip'>请先查询学生信息</text> </view>
