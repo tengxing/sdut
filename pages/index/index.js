@@ -23,6 +23,27 @@ Page({
       stdId: e.detail.value
     })
   },
+ 
+ download: function() {
+   var that = this;
+   var stdId = that.data.stdId;
+   wx.downloadFile({
+     url: 'https://yjxxclub.cn/jwch/download/?std_id=' + stdId,
+     success: function(res) {
+       console.log('下载文档成功')
+       var filePath = res.tempFilePath
+       wx.openDocument({
+         filePath: filePath,
+         success: function (res) {
+           console.log('打开文档成功')
+         }
+       })
+     },
+     fail: function(res) {},
+     complete: function(res) {},
+   })
+ },
+
   //chaxun 
   getGrade: function() {
     var user_info = {}
